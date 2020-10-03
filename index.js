@@ -6,7 +6,7 @@ const cors = require('cors')
 require('dotenv').config()
 
 
-
+console.log()
 var admin = require("firebase-admin");
 
 var serviceAccount = require("./burj-al-arab-aa1e1-firebase-adminsdk-u33op-68ff6c21c8.json");
@@ -26,7 +26,7 @@ app.use(cors())
 
 
 
-
+console.log( process.env.DB_USER, process.env.DB_PASS)
 
 
 app.get('/',(req,res) => {
@@ -36,7 +36,7 @@ app.get('/',(req,res) => {
 
 
 
-const uri = `mongodb+srv://${DB_USER}:${DB_PASS}@cluster0.0jhuw.mongodb.net/burjAlArab?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${ process.env.DB_USER}:${ process.env.DB_PASS}@cluster0.0jhuw.mongodb.net/burjAlArab?retryWrites=true&w=majority`;
 
 const client = new MongoClient(uri, { useNewUrlParser: true,  useUnifiedTopology: true });
 

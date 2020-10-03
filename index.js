@@ -3,6 +3,7 @@ const port = 5000
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser')
 const cors = require('cors')
+require('dotenv').config()
 
 
 
@@ -35,7 +36,7 @@ app.get('/',(req,res) => {
 
 
 
-const uri = "mongodb+srv://arabianData:ik636851@cluster0.0jhuw.mongodb.net/burjAlArab?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${DB_USER}:${DB_PASS}@cluster0.0jhuw.mongodb.net/burjAlArab?retryWrites=true&w=majority`;
 
 const client = new MongoClient(uri, { useNewUrlParser: true,  useUnifiedTopology: true });
 
@@ -90,6 +91,4 @@ const bearer = req.headers.authorization;
 
 
 
-app.listen(port,() => {
-    console.log('server start')
-})
+app.listen(process.env.PORT || port)
